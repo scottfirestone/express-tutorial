@@ -50,11 +50,14 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
+  res.render('index', {
     message: err.message,
     error: {}
   });
 });
 
-
+app.get('/', function(req, res, next) {
+  res.render('index', {title: "Express"});
+  res.send('holy crap!');
+})
 module.exports = app;
